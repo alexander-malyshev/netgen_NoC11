@@ -615,6 +615,7 @@ namespace netgen
       }
   }
 
+  const has_call_operator<int>::type has_call_operator<int>::value = has_call_operator<int>::type();
 
   template <typename T>
   void Element2d :: 

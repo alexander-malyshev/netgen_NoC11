@@ -15,7 +15,7 @@
 namespace netgen
 {
 
-  static constexpr int POINTINDEX_BASE = 1;
+  static const int POINTINDEX_BASE = 1;
   
   struct T_EDGE2
   {

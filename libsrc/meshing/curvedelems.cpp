@@ -4,7 +4,6 @@
 
 #include "../general/autodiff.hpp"
 
-
 namespace netgen
 {
   
@@ -1909,6 +1908,9 @@ namespace netgen
       };
   }
 
+  const has_call_operator<int>::type has_call_operator<int>::value = has_call_operator<int>::type();
+  const has_call_operator<double>::type has_call_operator<double>::value = has_call_operator<double>::type();
+
   template <typename T>
   void CurvedElements :: 
   CalcElementDShapes (SurfaceElementInfo & info, const Point<2,T> xi, MatrixFixWidth<2,T> dshapes) const
@@ -2821,8 +2823,15 @@ namespace netgen
     const Element & el = mesh[info.elnr];
 
     // dshapes.SetSize(info.ndof);
-    if ( (long int)(&dshapes(0,0)) % alignof(T) != 0)
-      throw NgException ("alignment problem");
+    #if _MSC_VER > 1900
+      if ( (long int)(&dshapes(0,0)) % alignof(T) != 0)
+        throw NgException ("alignment problem");
+    #endif
+    #if _MSC_VER < 1900
+      if ( (long int)(&dshapes(0,0)) % __alignof(T) != 0)
+        throw NgException ("alignment problem");
+    #endif
+      
     if (dshapes.Height() != info.ndof)
       throw NgException ("wrong height");
     if (rational && info.order >= 2)

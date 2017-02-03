@@ -89,7 +89,7 @@ public:
   const PointIndex PNum (int i) const { return pnum[i-1]; }
   PointIndex & PNum (int i) { return pnum[i-1]; }
   const PointIndex PNumMod (int i) const { return pnum[(i-1)%np]; }
-  auto PNums() const { return FlatArray<const PointIndex> (np, &pnum[0]); }
+  FlatArray<const PointIndex> PNums() const { return FlatArray<const PointIndex> (np, &pnum[0]); }
   void Delete () { deleted = true; for (PointIndex & p : pnum) p.Invalidate(); }
   bool IsDeleted () const { return deleted; }
 };

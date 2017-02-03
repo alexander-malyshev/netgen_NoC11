@@ -58,7 +58,6 @@
    class TopTools_MapOfShape;
 #endif
 
-class BRepAlgo_AsDes;
 class TopoDS_Face;
 class TopoDS_Shape;
 class TopoDS_Vertex;

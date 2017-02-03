@@ -1159,9 +1159,9 @@ namespace netgen
     MeshingParameters ();
     ///
     MeshingParameters (const MeshingParameters & mp2) = default;
-    MeshingParameters (MeshingParameters && mp2) = default;
+    MeshingParameters (MeshingParameters && mp2);
     MeshingParameters & operator= (const MeshingParameters & mp2) = default;
-    MeshingParameters & operator= (MeshingParameters && mp2) = default;
+    MeshingParameters & operator= (MeshingParameters && mp2);
     ///
     void Print (ostream & ost) const;
     /// 
@@ -1175,9 +1175,9 @@ namespace netgen
       MeshSizePoint (Point<3> _pnt, double _h) : pnt(_pnt), h(_h) { ; }
       MeshSizePoint () = default;
       MeshSizePoint (const MeshSizePoint &) = default;
-      MeshSizePoint (MeshSizePoint &&) = default;
+      MeshSizePoint (MeshSizePoint &&);
       MeshSizePoint & operator= (const MeshSizePoint &) = default;
-      MeshSizePoint & operator= (MeshSizePoint &&) = default;      
+      MeshSizePoint & operator= (MeshSizePoint &&);
     };
     Array<MeshSizePoint> meshsize_points;
     

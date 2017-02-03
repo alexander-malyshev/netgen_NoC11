@@ -320,8 +320,8 @@ namespace netgen
     ELEMENTTYPE ElementType (ElementIndex i) const 
     { return (volelements[i].flags.fixed) ? FIXEDELEMENT : FREEELEMENT; }
 
-    const auto & VolumeElements() const { return volelements; }
-    auto & VolumeElements() { return volelements; }
+    const netgen::Mesh::T_VOLELEMENTS & VolumeElements() const { return volelements; }
+    netgen::Mesh::T_VOLELEMENTS & VolumeElements() { return volelements; }
 
     ///
     DLL_HEADER double ElementError (int eli, const MeshingParameters & mp) const;
@@ -331,7 +331,7 @@ namespace netgen
     ///
     void ClearLockedPoints ();
 
-    const auto & LockedPoints() const { return lockedpoints; }
+    const netgen::Array<PointIndex> & LockedPoints() const { return lockedpoints; }
 
     /// Returns number of domains
     DLL_HEADER int GetNDomains() const;

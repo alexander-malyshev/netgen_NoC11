@@ -52,7 +52,7 @@ namespace netgen
       template <typename C> static std::true_type check( decltype( sizeof(&C::operator() )) ) { return std::true_type(); }
       template <typename> static std::false_type check(...) { return std::false_type(); }
       typedef decltype( check<T>(sizeof(char)) ) type;
-      static constexpr type value = type();
+      static const type value; // = type();
   };
 
 #ifdef __AVX__
@@ -182,7 +182,7 @@ namespace netgen
     double data;
     
   public:
-    static constexpr int Size() { return 1; }
+    static const int Size() { return 1; }
     SIMD () = default;
     SIMD (const SIMD &) = default;
     SIMD & operator= (const SIMD &) = default;
@@ -203,7 +203,7 @@ namespace netgen
     template <typename T>
     SIMD & operator= (const T & val)
     {
-//       SIMD_function(val, std::is_convertible<T, std::function<double(int)>>());
+      //SIMD_function(val, std::is_convertible<T, std::function<double(int)>>());
       SIMD_function(val, has_call_operator<T>::value);
       return *this;
     }
