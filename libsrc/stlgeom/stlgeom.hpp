@@ -179,8 +179,8 @@ namespace netgen
 
     double area;
   public:
-    STLGeometry();
-    virtual ~STLGeometry();
+    DLL_HEADER STLGeometry();
+    DLL_HEADER virtual ~STLGeometry();
 
 
     void Clear();

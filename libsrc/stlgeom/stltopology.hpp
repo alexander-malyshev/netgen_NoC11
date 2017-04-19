@@ -56,7 +56,7 @@ class STLReadTriangle
   Vec<3> normal;
   Point<3> pts[3];
 public:
-  STLReadTriangle (const Point<3> * apts, const Vec<3> & anormal);
+  DLL_HEADER STLReadTriangle (const Point<3> * apts, const Vec<3> & anormal);
   STLReadTriangle () {};
   const Point<3> & operator[] (int i) const { return pts[i]; }
   const Vec<3> & Normal() const { return normal; }
@@ -93,8 +93,8 @@ public:
 
 
 
-  STLTriangle (const int * apts);
-  STLTriangle () {pts[0]=0;pts[1]=0;pts[2]=0;}
+  DLL_HEADER STLTriangle (const int * apts);
+  DLL_HEADER STLTriangle () {pts[0]=0;pts[1]=0;pts[2]=0;}
 
   int operator[] (int i) const { return pts[i]; }
   int & operator[] (int i) { return pts[i]; }
@@ -306,7 +306,7 @@ public:
 
 
   int GetNT() const { return trias.Size(); }
-  void AddTriangle(const STLTriangle& t);
+  DLL_HEADER void AddTriangle(const STLTriangle& t);
   const STLTriangle & GetTriangle (int nr) const { return trias.Get(nr); }
   STLTriangle & GetTriangle (int nr) { return trias.Elem(nr); }
   
